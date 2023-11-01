@@ -59,7 +59,7 @@ class Location(BaseModel):
         return self.name
 
 
-class Post(BaseModel):
+class Post(BaseModel, PublishedQuerySet):
     title = models.CharField(
         max_length=256,
         verbose_name='Заголовок'

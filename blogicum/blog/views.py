@@ -26,7 +26,8 @@ def category_posts(request, category_slug):
     """Возвращает посты в заданной категории."""
     category = get_object_or_404(
         Category,
-        slug=category_slug
+        slug=category_slug,
+        is_published=True
     )
     post_list = category.posts.all().custom_filter()
     context = {'post_list': post_list}
