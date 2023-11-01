@@ -6,7 +6,7 @@ from blog.models import Post, Category
 def index(request):
     """Возвращает главную страницу."""
     posts_number = 5
-    post_list = Post.custom_manager.custom_filter(
+    post_list = Post.objects.custom_filter(
     ).select_related('category')[:posts_number]
     context = {'post_list': post_list}
     return render(request, 'blog/index.html', context)
@@ -15,7 +15,7 @@ def index(request):
 def post_detail(request, pk):
     """Возвращает заданный пост."""
     post = get_object_or_404(
-        Post.custom_manager.custom_filter(),
+        Post.objects.custom_filter(),
         pk=pk
     )
     context = {'post': post}

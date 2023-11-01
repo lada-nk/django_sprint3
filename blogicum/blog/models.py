@@ -59,7 +59,7 @@ class Location(BaseModel):
         return self.name
 
 
-class Post(BaseModel, PublishedQuerySet):
+class Post(BaseModel):
     title = models.CharField(
         max_length=256,
         verbose_name='Заголовок'
@@ -91,7 +91,7 @@ class Post(BaseModel, PublishedQuerySet):
         verbose_name='Категория',
         related_name='posts'
     )
-    custom_manager = PublishedQuerySet.as_manager()
+    objects = PublishedQuerySet.as_manager()
 
     class Meta:
         verbose_name = 'публикация'
