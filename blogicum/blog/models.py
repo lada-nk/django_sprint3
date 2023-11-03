@@ -88,15 +88,15 @@ class Post(BaseModel):
         Category,
         on_delete=models.SET_NULL,
         null=True,
-        verbose_name='Категория',
-        related_name='posts'
+        verbose_name='Категория'
     )
     objects = PublishedQuerySet.as_manager()
 
     class Meta:
         verbose_name = 'публикация'
         verbose_name_plural = 'Публикации'
-        ordering = ['-pub_date']
+        ordering = tuple(['-pub_date'])
+        default_related_name = 'posts'
 
     def __str__(self):
         return self.title
