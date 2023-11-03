@@ -4,7 +4,7 @@ from django.db import models
 
 
 class PublishedQuerySet(models.query.QuerySet):
-    
+
     def custom_filter(self):
         """Общие для всех постов фильтры."""
         return self.filter(
