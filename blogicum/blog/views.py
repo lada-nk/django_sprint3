@@ -29,6 +29,7 @@ def category_posts(request, category_slug):
         slug=category_slug,
         is_published=True
     )
-    post_list = category.posts.all().custom_filter()
-    context = {'post_list': post_list}
+    post_list = category.posts.custom_filter()
+    context = {'post_list': post_list,
+               'category': category}
     return render(request, 'blog/category.html', context)
